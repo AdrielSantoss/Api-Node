@@ -5,6 +5,7 @@ module.exports = {
     connection: {
       filename: './techmoon.db'
     },
+    useNullAsDefault: true,
     pool: {
       min: 2,
       max: 10

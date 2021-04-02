@@ -12,7 +12,8 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 consign()
     .include('./api/config/database.js')
-    .then()
+    .then('./api/app/controllers')
+    .then('./api/app/routes')
     .into(app)
 
 module.exports = app;
