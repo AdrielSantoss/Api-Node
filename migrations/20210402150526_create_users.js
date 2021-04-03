@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
             table.string('name').notNull()
             table.string('email').notNull().unique()
             table.string('password').notNull()
-            table.integer('access')
+            table.integer('access').defaultTo(0)
         }).then(()=>{
            return knex('users').insert({
               id: 1,

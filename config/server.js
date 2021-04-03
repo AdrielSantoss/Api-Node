@@ -2,18 +2,21 @@ const app = require('express')(),
       bodyParser = require('body-parser'),
       consign = require('consign'),
       cors = require('cors'),
+      validator = require('express-validator'),
       db = require('./database');
 
 app.db = db;
 
 app.use(bodyParser.urlencoded({extended:true}))
    .use(bodyParser.json())
-   .use(cors());
+   .use(cors())
+   .use(validator())
+
 
 consign()
-    .include('./api/config/database.js')
-    .then('./api/app/controllers')
-    .then('./api/app/routes')
+    .include('/app/routes')
+    .then('./app/controllers')
+    .then('./app/repository')
     .into(app)
 
 module.exports = app;
